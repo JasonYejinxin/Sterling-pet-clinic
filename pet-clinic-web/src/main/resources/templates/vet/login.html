@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vet Login</title>
+</head>
+<body>
+<h2>please enter your user name and password</h2>
+<div>
+    <form th:action="@{/vetLogin}" th:object="${vet}" method="post">
+        userName:<input type="text" th:field="*{uname}" id="userName" name="userName"><br>
+        password:<input type="password" th:field="*{password}" id="password" name="password"><br>
+        <input type="submit" id="login" name="login" value="login"/>
+        <input type="reset" name="reset" value="Reset"/>
+    </form>
+</div>
+</body>
+</html>

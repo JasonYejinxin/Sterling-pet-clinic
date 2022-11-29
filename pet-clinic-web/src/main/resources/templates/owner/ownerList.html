@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Lists of owners</title>
+</head>
+<body>
+<h2 th:text="'Welcome Owners'">Owners List</h2>
+
+<table class = "table table-striped">
+    <thead>
+    <tr>
+        <th style="width: 150px;">uname</th>
+        <th style="width: 150px;">password</th>
+        <th style="width: 150px;">address</th>
+        <th style="width: 150px;">city</th>
+        <th style="width: 150px;">telephone</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="owner : ${owner}">
+        <td th:text="${owner.uname}">Joe1111</td>
+        <td th:text="${owner.password}">J1111</td>
+        <td th:text="${owner.address}">311 Partington</td>
+        <td th:text="${owner.city}">Windsor</td>
+        <td th:text="${owner.telephone}">2498706770</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Lists of vets</title>
+</head>
+<body>
+<h2 th:text="'Welcome vets'">Vets List</h2>
+
+<table class = "table table-striped">
+    <thead>
+    <tr>
+        <th style="width: 150px;">userName</th>
+        <th style="width: 150px;">password</th>
+        <th style="width: 150px;">specialties</th>
+        <th style="width: 150px;">start of career</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vet : ${vet}">
+        <td th:text="${vet.uname}">1</td>
+        <td th:text="${vet.password}">Joe</td>
+        <td th:text="${vet.specialties}">Surgery</td>
+        <td th:text="${vet.startOfCareer}">careerTime</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

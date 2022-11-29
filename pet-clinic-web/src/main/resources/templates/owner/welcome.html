@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Owner</title>
+</head>
+<body>
+<h2>Welcome Owner</h2>
+<div>
+    <img src="../../static/images/pets.png" height="170" width="239"/>
+</div>
+<div>
+    <form th:action="@{/ownerRegister}" th:object="${owner}" method="post">
+        userName:<input type="text" th:field="*{uname}" id="userName" name="userName"><br>
+        password:<input type="password" th:field="*{password}" id="password" name="password"><br>
+        address:<input type="text" th:field="*{address}" id="address" name="address"><br>
+        city:<input type="text" th:field="*{city}" id="city" name="city"><br>
+        telephone:<input type="text" th:field="*{telephone}" id="telephone" name="telephone"><br>
+        <input type="submit" id="registry" name="register" value="register"/>
+        <input type="reset" name="reset" value="Reset"/>
+    </form>
+</div>
+
+<div>
+    Already have an account?
+    <a href="ownerLogin"><button type="button">Login Now</button></a>
+</div>
+</body>

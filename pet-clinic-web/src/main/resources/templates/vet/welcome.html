@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome vet</title>
+</head>
+<body>
+<h2>Welcome Vet</h2>
+<div>
+    <img src="../../static/images/pets.png" height="170" width="239"/>
+</div>
+<div>
+    <form th:action="@{/vetRegister}" th:object="${vet}" method="post">
+        userName:<input type="text" th:field="*{uname}" id="userName" name="userName"><br>
+        password:<input type="password" th:field="*{password}" id="password" name="password"><br>
+        specialties:<input type="text" th:field="*{specialties}" id="specialties" name="specialties"><br>
+        start date of career(MM/dd/yyyy):<input type="text" th:field="*{startOfCareer}" id="startOfCareer" name="startOfCareer"><br>
+        <input type="submit" id="registry" name="register" value="register"/>
+        <input type="reset" name="reset" value="Reset"/>
+    </form>
+</div>
+
+<div>
+    Already have an account?
+    <a href="vetLogin"><button type="button">Login Now</button></a>
+</div>
+</body>
