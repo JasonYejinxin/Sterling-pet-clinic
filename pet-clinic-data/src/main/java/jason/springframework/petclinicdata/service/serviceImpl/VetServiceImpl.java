@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class VetServiceImpl implements VetService {
     @Override
-    public Vet loginService(String userName, String password) {
+    public Vet loginService(String email, String password) {
         return null;
     }
 
     @Override
-    public Vet registService(Vet vet) {
-        return null;
+    public int registService(Vet vet) {
+        return 0;
     }
 }

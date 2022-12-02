@@ -8,7 +8,7 @@
 <h2>please enter your user name and password</h2>
 <div>
     <form th:action="@{/vetLogin}" th:object="${vet}" method="post">
-        userName:<input type="text" th:field="*{uname}" id="userName" name="userName"><br>
+        email:<input type="text" th:field="*{email}" id="email" name="email"><br>
         password:<input type="password" th:field="*{password}" id="password" name="password"><br>
         <input type="submit" id="login" name="login" value="login"/>
         <input type="reset" name="reset" value="Reset"/>

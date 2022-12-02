@@ -8,7 +8,7 @@
 <h2>Register a new account</h2>
 <div>
     <form th:action="@{/create}" th:object="${user}" method="post">
-        userName:<input type="text" th:field="*{uname}" id="userName" name="userName"><br>
+        email:<input type="text" th:field="*{email}" id="email" name="email"><br>
         password:<input type="password" th:field="*{password}" id="password" name="password"><br>
         <input type="submit" id="registry" name="register" value="register"/>
         <input type="reset" name="reset" value="Reset"/>

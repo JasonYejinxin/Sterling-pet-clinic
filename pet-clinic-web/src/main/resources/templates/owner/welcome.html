@@ -11,7 +11,7 @@
 </div>
 <div>
     <form th:action="@{/ownerRegister}" th:object="${owner}" method="post">
-        userName:<input type="text" th:field="*{uname}" id="userName" name="userName"><br>
+        email:<input type="text" th:field="*{email}" id="email" name="email"><br>
         password:<input type="password" th:field="*{password}" id="password" name="password"><br>
         address:<input type="text" th:field="*{address}" id="address" name="address"><br>
         city:<input type="text" th:field="*{city}" id="city" name="city"><br>

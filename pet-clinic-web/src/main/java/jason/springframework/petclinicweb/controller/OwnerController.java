@@ -19,8 +19,7 @@ public class OwnerController {
 
     @Resource
     private OwnerService ownerService;
-    @Resource
-    private OwnerDao ownerDao;
+
 
 
     @GetMapping("/ownerRegister")
@@ -31,17 +30,17 @@ public class OwnerController {
 
     @PostMapping("/ownerRegister")
     public String registrySubmit(@ModelAttribute Owner owner) {
-
-        Owner newOwner = new Owner();
-
-        newOwner.setUname(owner.getUname());
-        newOwner.setPassword(owner.getPassword());
-        newOwner.setAddress(owner.getAddress());
-        newOwner.setCity(owner.getCity());
-        newOwner.setTelephone(owner.getTelephone());
-        ownerDao.insertOwner(newOwner.getUname(), newOwner.getPassword(), newOwner.getAddress(), newOwner.getCity(), newOwner.getTelephone());
-       // ownerService.registService(newOwner);
-        return "/owner/success";
+   int conditionNum = ownerService.registService(owner);
+        if(conditionNum == 2){
+            return "/owner/success";
+        }
+        else if(conditionNum == 1){
+            return "/owner/fail";
+        }
+        else if(conditionNum == 0){
+            return "/owner/emailError";
+        }
+        else return "/index/error";
     }
 
     @GetMapping("/ownerLogin")
@@ -51,19 +50,20 @@ public class OwnerController {
     }
 
 
-    @PostMapping("/ownerLogin")
-    public String loginSubmit(@ModelAttribute Owner owner){
-//        Owner owner1 = new Owner();
-//        owner1.setUname(owner.getUname());
-//        owner1.setPassword(owner.getPassword());
-        //Owner newOwner = ownerService.loginService(owner1.getUname(),owner1.getPassword());
-        List<Owner> newOwner = ownerDao.findOwnerByUnameAndPassword(owner.getUname(),owner.getPassword());
-        if(newOwner.get(0) != null){
-            return "/owner/ownerList";
-        }
-        else {
-            return "/owner/fail";
-        }
-    }
+//    @PostMapping("/ownerLogin")
+//    public String loginSubmit(@ModelAttribute Owner owner){
+////        Owner owner1 = new Owner();
+////        owner1.setUname(owner.getUname());
+////        owner1.setPassword(owner.getPassword());
+//       // Owner newOwner = ownerService.loginService(owner1.getUname(),owner1.getPassword());
+//        Owner newOwner = ownerDao.findByUnameAndPassword(owner.getUname(),owner.getPassword());
+//        //List<Owner> newOwner = ownerDao.findOwnerByUnameAndPassword(owner.getUname(),owner.getPassword());
+//        if(newOwner.getUname() != null){
+//            return "/owner/ownerList";
+//        }
+//        else {
+//            return "/owner/fail";
+//        }
+//    }
 
 }

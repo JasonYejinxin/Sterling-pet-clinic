@@ -10,7 +10,7 @@
 <table class = "table table-striped">
     <thead>
     <tr>
-        <th style="width: 150px;">userName</th>
+        <th style="width: 150px;">email</th>
         <th style="width: 150px;">password</th>
         <th style="width: 150px;">specialties</th>
         <th style="width: 150px;">start of career</th>
@@ -18,7 +18,7 @@
     </thead>
     <tbody>
     <tr th:each="vet : ${vet}">
-        <td th:text="${vet.uname}">1</td>
+        <td th:text="${vet.email}">1</td>
         <td th:text="${vet.password}">Joe</td>
         <td th:text="${vet.specialties}">Surgery</td>
         <td th:text="${vet.startOfCareer}">careerTime</td>

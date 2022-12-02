@@ -25,11 +25,11 @@ public class VetController {
     @PostMapping("/vetRegister")
     public String registrySubmit(@ModelAttribute Vet vet) {
         Vet newVet = new Vet();
-        newVet.setUname(vet.getUname());
+        newVet.setEmail(vet.getEmail());
         newVet.setPassword(vet.getPassword());
         newVet.setSpecialties(vet.getSpecialties());
         newVet.setStartOfCareer(vet.getStartOfCareer());
-        vetDao.insertVet(newVet.getUname(), newVet.getPassword(), newVet.getSpecialties(), newVet.getStartOfCareer());
+        vetDao.insertVet(newVet.getEmail(), newVet.getPassword(), newVet.getSpecialties(), newVet.getStartOfCareer());
         return "/vet/success";
     }
 
@@ -42,7 +42,7 @@ public class VetController {
 
     @PostMapping("/vetLogin")
     public String loginSubmit(@ModelAttribute Vet vet){
-        List<Vet> newVet = vetDao.findVetByUnameAndPassword(vet.getUname(),vet.getPassword());
+        List<Vet> newVet = vetDao.findVetByUnameAndPassword(vet.getEmail(),vet.getPassword());
         if(newVet.get(0) != null){
             return "/vet/vetList";
         }

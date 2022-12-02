@@ -2,6 +2,7 @@ package jason.springframework.petclinicdata.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Date;
@@ -10,7 +11,9 @@ import java.util.Objects;
 @Table(name = "vet")
 @Entity
 public class Vet extends User{
+    @Column(name = "specialties")
     private String specialties;
+    @Column(name = "startOfCareer")
     @DateTimeFormat(pattern ="MM/dd/yyyy")
     private Date startOfCareer;
 

@@ -18,7 +18,7 @@ public class OwnerServiceImpl implements OwnerService {
 
     public boolean emailValidOrNot(Owner owner){
         boolean flag = false;
-        String email = owner.getUname();
+        String email = owner.getEmail();
 
         String regEx1 = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
         Pattern p;
@@ -35,9 +35,9 @@ public class OwnerServiceImpl implements OwnerService {
         Owner newOwner1 = new Owner();
         Owner newOwner2 = new Owner();
         Owner newOwner3 = new Owner();
-        newOwner1.setUname("jason123@gmail.com");
-        newOwner2.setUname("jason123@qweqw212312.com");
-        newOwner3.setUname("jason12qweq");
+        newOwner1.setEmail("jason123@gmail.com");
+        newOwner2.setEmail("jason123@qweqw212312.com");
+        newOwner3.setEmail("jason12qweq");
 
         if(emailValidOrNot(newOwner1)){
             System.out.println("jason123@gmail.com is a valid email");
@@ -63,8 +63,8 @@ public class OwnerServiceImpl implements OwnerService {
 
 
     @Override
-    public Owner loginService(String uname, String password) {
-        Owner owner = ownerDao.findByUnameAndPassword(uname,password);
+    public Owner loginService(String email, String password) {
+        Owner owner = ownerDao.findByEmailAndPassword(email,password);
 
         if(owner != null){
             //keep secret
@@ -74,23 +74,20 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public Owner registService(Owner owner) {
-//        Owner owner1 = new Owner();
-//        if(ownerDao.findByUname(owner.getUname()) != null){
-//            return null;
-//        }
-//        else{
-//            ownerDao.insertOwner(owner.getUname(),owner.getPassword(),owner.getAddress(),owner.getCity(),owner.getTelephone());
-//        }
-//        return owner1;
-        if(ownerDao.findByUname(owner.getUname())!=null || emailValidOrNot(owner) == false){
-            return null;
+    public int registService(Owner owner) {
+        //uname existed or email not fit reEx
+        if(!ownerDao.findByEmail(owner.getEmail()).isEmpty() || !emailValidOrNot(owner)){
+            return 0;
         }else{
-            Owner newOwner = ownerDao.saveAndFlush(owner);
-            if(newOwner!=null ){
-                newOwner.setPassword("");
+            int suc = ownerDao.insertOwner(owner.getEmail(),owner.getPassword(),owner.getAddress(),owner.getCity(),owner.getTelephone());
+            if(suc < 1 ){
+                //insert failed
+                return 1;
             }
-            return newOwner;
+            //insert success
+            return 2;
         }
     }
+
+
 }

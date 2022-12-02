@@ -27,11 +27,11 @@ public class UserController {
 
         User newUser = new User();
 
-        newUser.setUname(user.getUname());
+        newUser.setEmail(user.getEmail());
         newUser.setPassword(user.getPassword());
         System.out.println("start");
         //userDao.save(user);
-        userDao.insertRule(newUser.getUname(),newUser.getPassword());
+        userDao.insertRule(newUser.getEmail(),newUser.getPassword());
         System.out.println(newUser);
         return "/user/success";
     }

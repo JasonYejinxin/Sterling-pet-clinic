@@ -16,17 +16,17 @@ import java.util.List;
 @Repository
 public interface VetDao extends JpaRepository<Vet,Integer> {
     @Transactional
-    @Query(value = "insert into vet(uname,password,specialties,start_of_career) values(:uname,:password,:specialties,:startOfCareer)", nativeQuery = true)
+    @Query(value = "insert into vet(email,password,specialties,start_of_career) values(:email,:password,:specialties,:startOfCareer)", nativeQuery = true)
     @Modifying
-    int insertVet(@Param("uname") String userName, @Param("password") String password, @Param("specialties") String specialties,
+    int insertVet(@Param("email") String email, @Param("password") String password, @Param("specialties") String specialties,
                     @Param("startOfCareer") Date startOfCareer);
 
     @Transactional
-    @Query(value = "select * from vet where uname = :uname and password = :password", nativeQuery = true)
+    @Query(value = "select * from vet where email = :email and password = :password", nativeQuery = true)
     @Modifying
-    List<Vet> findVetByUnameAndPassword(@Param("uname") String uname, @Param("password") String password);
+    List<Vet> findVetByUnameAndPassword(@Param("email") String email, @Param("password") String password);
 
-    Vet findByUname(String uname);
-    Vet findByUnameAndPassword(String uname, String password);
+    Vet findByEmail(String email);
+    Vet findByEmailAndPassword(String email, String password);
 
 }

@@ -8,17 +8,17 @@ import java.util.Objects;
 @Entity
 public class User extends BaseEntity{
 
-    @Column(name = "uname")
-    private String uname;
+    @Column(name = "email")
+    private String email;
     @Column(name = "password")
     private String password;
 
-    public String getUname() {
-        return uname;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUname(String uname) {
-        this.uname = uname;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -35,11 +35,11 @@ public class User extends BaseEntity{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         User user = (User) o;
-        return Objects.equals(uname, user.uname) && Objects.equals(password, user.password);
+        return Objects.equals(email, user.email) && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), uname, password);
+        return Objects.hash(super.hashCode(), email, password);
     }
 }

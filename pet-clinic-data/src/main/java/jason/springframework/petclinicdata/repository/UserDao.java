@@ -13,11 +13,11 @@ import javax.transaction.Transactional;
 public interface UserDao extends JpaRepository<User,Integer> {
 
     @Transactional
-    @Query(value = "insert into users(uname,password) values(:uname,:password)", nativeQuery = true)
+    @Query(value = "insert into users(email,password) values(:email,:password)", nativeQuery = true)
     @Modifying
-    int insertRule(@Param("uname") String uname, @Param("password") String password);
+    int insertRule(@Param("email") String email, @Param("password") String password);
 
-    User findByUname(String uname);
-    User findByUnameAndPassword(String uname, String password);
+    User findByEmail(String email);
+    User findByEmailAndPassword(String email, String password);
 
 }

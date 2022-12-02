@@ -10,7 +10,7 @@
 <table class = "table table-striped">
     <thead>
     <tr>
-        <th style="width: 150px;">uname</th>
+        <th style="width: 150px;">email</th>
         <th style="width: 150px;">password</th>
         <th style="width: 150px;">address</th>
         <th style="width: 150px;">city</th>
@@ -19,7 +19,7 @@
     </thead>
     <tbody>
     <tr th:each="owner : ${owner}">
-        <td th:text="${owner.uname}">Joe1111</td>
+        <td th:text="${owner.email}">Joe1111</td>
         <td th:text="${owner.password}">J1111</td>
         <td th:text="${owner.address}">311 Partington</td>
         <td th:text="${owner.city}">Windsor</td>
